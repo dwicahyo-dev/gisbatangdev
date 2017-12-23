@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2017 at 08:00 PM
+-- Generation Time: Dec 23, 2017 at 08:53 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -21,6 +21,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_gisbatang`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `berita`
+--
+
+CREATE TABLE `berita` (
+  `id_berita` int(11) NOT NULL,
+  `id_kategori_berita` int(11) NOT NULL,
+  `judul_berita` varchar(255) NOT NULL,
+  `isi_berita` text NOT NULL,
+  `author` varchar(255) NOT NULL,
+  `publish_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `berita`
+--
+
+INSERT INTO `berita` (`id_berita`, `id_kategori_berita`, `judul_berita`, `isi_berita`, `author`, `publish_date`) VALUES
+(1, 1, 'OKe', 'lak', 'asjd', '2017-12-20');
 
 -- --------------------------------------------------------
 
@@ -52,6 +74,24 @@ INSERT INTO `kategori` (`id_kategori`, `kategori`, `icon`) VALUES
 (11, 'Tempat Ibadah', 'icon10.png'),
 (12, 'Penginapan', 'icon11.png'),
 (13, 'Hello Kategori', 'test.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kategori_berita`
+--
+
+CREATE TABLE `kategori_berita` (
+  `id_kategori_berita` int(11) NOT NULL,
+  `kategori_berita` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kategori_berita`
+--
+
+INSERT INTO `kategori_berita` (`id_kategori_berita`, `kategori_berita`) VALUES
+(1, 'Pemerintahan');
 
 -- --------------------------------------------------------
 
@@ -105,17 +145,32 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_user`, `nama_lengkap`, `username`, `password`, `email`) VALUES
 (1, 'Catur Andi Pamungkas', 'caturandip', '$2y$10$MOdAxrFj8a.OxOiQ2DkJkeOOrsyfqa43JCwJ54pIRKaAwaxRftnTG', 'catur.andi.pamungkas@gmail.com'),
 (2, 'Wow Testing', 'andipamungkas', '$2y$10$B1IBI7yh5SEqLbVWIbto8OZUtZbNlK7JoZv2zG4dZxV2ncheRHZL6', 'caturandip@gmail.com'),
-(3, 'Catur Andi', 'caturandp', '$2y$10$04o2lS6mZULITVLNhTdBk.A3WSuPNN1OwmWOkwCxD4riqnyDquZaO', 'caturandipamungkas@gmail.com');
+(3, 'Catur Andi', 'caturandp', '$2y$10$04o2lS6mZULITVLNhTdBk.A3WSuPNN1OwmWOkwCxD4riqnyDquZaO', 'caturandipamungkas@gmail.com'),
+(4, 'Admin', 'admin', '$2y$10$uMV5p.4gPx79Q0HmYSDLmOqNCNMz2fcDzIkM4BMaqYceETAZNVHp6', 'admin@gmail.com'),
+(5, 'Admin Oke 123', 'adminoke123', '$2y$10$lSOwR.NSiFZ86CA9ZDtuSOgw5yK0n1/rpOV1MJkEZd39wT7Fn614S', 'adminoke123@gmail.com');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `berita`
+--
+ALTER TABLE `berita`
+  ADD PRIMARY KEY (`id_berita`),
+  ADD KEY `id_kategori_berita` (`id_kategori_berita`);
+
+--
 -- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id_kategori`);
+
+--
+-- Indexes for table `kategori_berita`
+--
+ALTER TABLE `kategori_berita`
+  ADD PRIMARY KEY (`id_kategori_berita`);
 
 --
 -- Indexes for table `tempat`
@@ -135,10 +190,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `berita`
+--
+ALTER TABLE `berita`
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
   MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `kategori_berita`
+--
+ALTER TABLE `kategori_berita`
+  MODIFY `id_kategori_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tempat`
@@ -150,7 +217,17 @@ ALTER TABLE `tempat`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `berita`
+--
+ALTER TABLE `berita`
+  ADD CONSTRAINT `berita_ibfk_1` FOREIGN KEY (`id_kategori_berita`) REFERENCES `kategori_berita` (`id_kategori_berita`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
