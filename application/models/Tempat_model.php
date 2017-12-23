@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Tempat_model extends CI_Model {
-	private $table = 'tempat'; 
+	private $table = 'tempat';
 	
 	public function get_tempat()
 	{
@@ -29,8 +29,15 @@ class Tempat_model extends CI_Model {
 		if ($this->db->affected_rows() > 0 ) {
 			return true;
 		}
-
 	}
+
+	public function search_tempat($search)
+    {
+        return $this->db->select('*')
+                    ->from($this->table)
+                    ->like('nama_tempat', $search)
+                    ->get()->result();
+    }
 
 }
 

@@ -20,7 +20,6 @@ class Kategori extends Restdata {
 		}else{
 			return $this->badreq('Data Kategori Tidak Ditemukan');
 		}
-		
 	}
 
 	public function index_post()

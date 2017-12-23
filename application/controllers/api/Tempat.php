@@ -70,7 +70,17 @@ class Tempat extends Restdata {
 				'status' => 'Data Tempat Berhasil Di Delete'
 			],Restdata::HTTP_OK);
 		} else {
-			$this->badreq('Failed To Delete ID ' .$id);
+			$this->badreq('Gagal Menghapus Data Tempat dengan ID ' .$id);
+		}
+	}
+
+	public function search_get($search)
+	{
+		$tempat = $this->Tempat_model->search_tempat($search);
+		if($tempat != NULL){
+			return $this->response($tempat, 200);
+		}else{
+			return $this->badreq('Pencarian Tempat Tidak Ditemukan');
 		}
 	}
 

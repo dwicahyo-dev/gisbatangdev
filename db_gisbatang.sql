@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2017 at 08:53 AM
+-- Generation Time: Dec 23, 2017 at 02:07 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -42,7 +42,8 @@ CREATE TABLE `berita` (
 --
 
 INSERT INTO `berita` (`id_berita`, `id_kategori_berita`, `judul_berita`, `isi_berita`, `author`, `publish_date`) VALUES
-(1, 1, 'OKe', 'lak', 'asjd', '2017-12-20');
+(2, 1, 'Oke Berita', 'skljflsdkjflksd', 'Pl;sakd', '2017-12-06'),
+(3, 1, 'Siap Berita', 'Oke Siap Beritanya', 'lkasd', '2017-12-06');
 
 -- --------------------------------------------------------
 
@@ -193,7 +194,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -218,16 +219,6 @@ ALTER TABLE `tempat`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `berita`
---
-ALTER TABLE `berita`
-  ADD CONSTRAINT `berita_ibfk_1` FOREIGN KEY (`id_kategori_berita`) REFERENCES `kategori_berita` (`id_kategori_berita`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

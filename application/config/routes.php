@@ -11,13 +11,20 @@ $route['api/register']['POST']		= 'api/users/register';
 $route['api/login']['POST']			= 'api/users/login';
 
 // ---------------------- ROUTE KATEGORI --------------------------------
-
 $route['api/kategori']['GET']                          		= 'api/kategori/index';
 $route['api/kategori/format/(:any)']['GET']            		= 'api/kategori/index/format/$1';
 $route['api/kategori/show/(:num)']['GET']              		= 'api/kategori/show/$1';
 $route['api/kategori/show/(:num)/format/(:any)']['GET']     = 'api/kategori/show/$1/format/$2';
 
 $route['api/kategori']['POST']                         		= 'api/kategori/index';
+
+// ---------------------- ROUTE KATEGORI BERITA --------------------------------
+$route['api/kategori_berita']['GET']                          		= 'api/kategori_berita/index';
+$route['api/kategori_berita/format/(:any)']['GET']            		= 'api/kategori_berita/index/format/$1';
+$route['api/kategori_berita/show/(:num)']['GET']              		= 'api/kategori_berita/show/$1';
+$route['api/kategori_berita/show/(:num)/format/(:any)']['GET']     = 'api/kategori_berita/show/$1/format/$2';
+
+$route['api/kategori_berita']['POST']                         		= 'api/kategori_berita/index';
 
 // ---------------------- ROUTE TEMPAT --------------------------------
 $route['api/tempat']['GET']                          		= 'api/tempat/index';
@@ -29,4 +36,13 @@ $route['api/tempat']['POST']                         		= 'api/tempat/index';
 
 $route['api/tempat/(:num)']['DELETE']                   	= 'api/tempat/tempat/$1';
 
+// ---------------------- ROUTE BERITA --------------------------------
+$route['api/berita']['GET']                          		= 'api/berita/index';
+$route['api/berita/format/(:any)']['GET']            		= 'api/berita/index/format/$1';
+$route['api/berita/show/(:num)']['GET']              		= 'api/berita/show/$1';
+$route['api/berita/show/(:num)/format/(:any)']['GET']     	= 'api/berita/show/$1/format/$2';
+
+$route['api/berita']['POST']                         		= 'api/berita/index';
+
+$route['api/berita/(:num)']['DELETE']                   	= 'api/berita/berita/$1';
 
