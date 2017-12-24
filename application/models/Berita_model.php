@@ -29,7 +29,6 @@ class Berita_model extends CI_Model {
 		if ($this->db->affected_rows() > 0 ) {
 			return true;
 		}
-
 	}
 
 	public function search_berita($search)

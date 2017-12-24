@@ -12,6 +12,10 @@ class Berita extends Restdata {
 		$this->cektoken();
 	}
 
+	/**
+	 * Digunakan Untuk GET ALL Berita
+	 * @return [type] [description]
+	 */
 	public function index_get()
 	{
 		$berita = $this->Berita_model->get_berita();
@@ -23,6 +27,10 @@ class Berita extends Restdata {
 		}
 	}
 
+	/**
+	 * Digunakan Untuk INSERT DATA Berita dengan Method POST
+	 * @return [type] [description]
+	 */
 	public function index_post()
 	{
 		$data = [
@@ -30,14 +38,12 @@ class Berita extends Restdata {
 			'judul_berita' => $this->input->post('judul_berita'),
 			'isi_berita' => $this->input->post('isi_berita'),
 			'author' => $this->input->post('author'),
-			'publish_date' => $this->input->post('publish_date')
 		];
 
 		$this->form_validation->set_rules('id_kategori_berita', 'Kategori Berita ID', 'trim|required', 'ID Kategori Berita Wajib Diisi');
 		$this->form_validation->set_rules('judul_berita', 'Judul Berita', 'trim|required', 'Judul Berita Wajib Diisi');
 		$this->form_validation->set_rules('isi_berita', 'Isi Berita', 'trim|required', 'Isi Berita Wajib Diisi');
 		$this->form_validation->set_rules('author', 'Author', 'trim|required', 'Author Wajib Diisi');
-		$this->form_validation->set_rules('publish_date', 'Publish Date', 'trim|required', 'Publish Date Wajib Diisi');
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->badreq($this->validation_errors());
@@ -46,9 +52,13 @@ class Berita extends Restdata {
 				$this->response($data,Restdata::HTTP_CREATED);
 			}
 		}
-
 	}
 
+	/**
+	 * Digunakan Untuk GET Single Berita Berdasarkan ID Berita
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
 	public function show_get($id)
 	{
 		$berita = $this->Berita_model->get_berita_where($id);
@@ -60,6 +70,11 @@ class Berita extends Restdata {
 		}
 	}
 
+	/**
+	 * Digunakan Untuk Mendelete Berita Berdasarkan ID Berita
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
 	public function berita_delete($id)
 	{
 		$delete_berita = $this->Berita_model->delete_berita($id);
@@ -74,6 +89,11 @@ class Berita extends Restdata {
 		}
 	}
 
+	/**
+	 * Digunakan Untuk Mencari Berita Berdasarkan judul_berita
+	 * @param  [type] $search [description]
+	 * @return [type]         [description]
+	 */
 	public function search_get($search)
 	{
 		$berita = $this->Berita_model->search_berita($search);
