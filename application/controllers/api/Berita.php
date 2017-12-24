@@ -74,6 +74,16 @@ class Berita extends Restdata {
 		}
 	}
 
+	public function search_get($search)
+	{
+		$berita = $this->Berita_model->search_berita($search);
+		if($berita != NULL){
+			return $this->response($berita, 200);
+		}else{
+			return $this->badreq('Pencarian Berita Tidak Ditemukan');
+		}
+	}
+
 }
 
 /* End of file Berita.php */

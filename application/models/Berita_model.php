@@ -32,6 +32,14 @@ class Berita_model extends CI_Model {
 
 	}
 
+	public function search_berita($search)
+    {
+        return $this->db->select('*')
+                    ->from($this->table)
+                    ->like('judul_berita', $search)
+                    ->get()->result();
+    }
+
 }
 
 /* End of file Berita_model.php */
